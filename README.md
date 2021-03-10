@@ -31,7 +31,7 @@
 
 > # auth service
 
-> `commands that need to be used before using the common service`
+> `commands that need to be used before using the auth service`
 
 - npm init -y
 - tsc --init
@@ -46,7 +46,6 @@
 - npm install cookie-session @types/cookie-session
 - npm install supertest @types/supertest --save-dev
 - npm install @types/es6-shim --save-dev
-- npm install ts-jest --save-dev
 - npm install --save-dev jest @types/jest ts-jest
 - npm install ts-node-dev
 - npm install @yavartickets/common
@@ -54,6 +53,43 @@
 > `docker build`
 
 - docker build -t yavarguliyev/auth .
+
+> # nats-test service
+
+> `commands that need to be used before using the nats-test service`
+
+- npm init -y
+- tsc --init
+
+> `dependencies`
+
+- npm install typescript @types/node
+- npm install node-nats-streaming
+- npm install @types/es6-shim --save-dev
+- npm install ts-node-dev
+- npm install @yavartickets/common
+
+> # expiration service
+
+> `commands that need to be used before using the expiration service`
+
+- npm init -y
+- tsc --init
+
+> `dependencies`
+
+- npm install express bull cookie-session express-async-errors jsonwebtoken
+- npm install mongoose mongoose-update-if-current node-nats-streaming ts-node-dev
+- npm install typescript @types/express @types/jsonwebtoken @types/bull
+- npm install @types/cookie-session @types/mongoose @yavartickets/common
+
+- npm install @types/es6-shim --save-dev
+- npm install --save-dev jest @types/jest ts-jest
+
+> `docker build && push`
+
+- docker build -t yavarguliyev/expiration .
+- docker push yavarguliyev/expiration
 
 > # Before creating pull request
 
