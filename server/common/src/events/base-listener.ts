@@ -1,0 +1,45 @@
+import { Message, Stan } from 'node-nats-streaming';
+import { Subjects } from './enums/enum-types';
+
+interface Event {
+  subject: Subjects;
+  data: any;
+}
+
+abstract class Listener<T extends Event> {
+  abstract subject: T['subject'];
+  abstract queueGroupName: string;
+  abstract onMessage(data: T['data'], msg: Message): void;
+  protected client: Stan;
+  protected ackWaik = 5 * 1000;
+
+  constructor(client: Stan) {
+    this.client = client;
+  }
+
+  subscriptionOptions() {
+    return this.client.subscriptionOptions().setDeliverAllAvailable().setManualAckMode(true).setAckWait(this.ackWaik).setDurableName(this.queueGroupName);
+  }
+
+  listen() {
+    const subscription = this.client.subscribe(
+      this.subject,
+      this.queueGroupName,
+      this.subscriptionOptions()
+    );
+
+    subscription.on('message', (msg: Message) => {
+      console.log(`Message received: ${this.subject} / ${this.queueGroupName}`);
+
+      const parseData = this.pareseMessage(msg);
+      this.onMessage(parseData, msg);
+    });
+  }
+
+  pareseMessage(msg: Message) {
+    const data = msg.getData();
+    return typeof data === 'string' ? JSON.parse(data) : JSON.parse(data.toString('utf-8'));
+  }
+}
+
+export { Listener };
