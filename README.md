@@ -91,6 +91,29 @@
 - docker build -t yavarguliyev/expiration .
 - docker push yavarguliyev/expiration
 
+> # orders service
+
+> `commands that need to be used before using the orders service`
+
+- npm init -y
+- tsc --init
+
+> `dependencies`
+
+- npm install express ts-node-dev cookie-session express-async-errors jsonwebtoken
+- npm install mongoose mongoose-update-if-current node-nats-streaming ts-node-dev
+- npm install typescript @types/express @types/jsonwebtoken @types/bull
+- npm install @types/cookie-session @types/mongoose @yavartickets/common
+
+- npm install @types/es6-shim --save-dev
+- npm install supertest @types/supertest --save-dev
+- npm install mongodb-memory-server --save-dev
+- npm install --save-dev jest @types/jest ts-jest
+
+> `docker build && push`
+
+- docker build -t yavarguliyev/orders .
+
 > # Before creating pull request
 
 ```javascript
