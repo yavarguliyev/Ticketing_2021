@@ -40,12 +40,11 @@
 
 - npm install typescript express @types/express
 - npm install jsonwebtoken @types/jsonwebtoken
-- npm install mongoose @types/mongoose
+- npm install mongoose express-validator @types/mongoose
 - npm install mongodb-memory-server --save-dev
 - npm install express-async-errors
 - npm install cookie-session @types/cookie-session
 - npm install supertest @types/supertest --save-dev
-- npm install @types/es6-shim --save-dev
 - npm install --save-dev jest @types/jest ts-jest
 - npm install ts-node-dev
 - npm install @yavartickets/common
@@ -110,7 +109,7 @@
 - npm install mongodb-memory-server --save-dev
 - npm install --save-dev jest @types/jest ts-jest
 
-> `docker build && push`
+> `docker build`
 
 - docker build -t yavarguliyev/orders .
 
@@ -148,10 +147,9 @@
 
 - npm install express ts-node-dev cookie-session express-async-errors jsonwebtoken
 - npm install mongoose mongoose-update-if-current node-nats-streaming ts-node-dev
-- npm install typescript @types/express @types/jsonwebtoken
+- npm install @types/jsonwebtoken @types/express @types/jsonwebtoken express-validator typescript
 - npm install @types/cookie-session @types/mongoose @yavartickets/common stripe
 
-- npm install @types/es6-shim --save-dev
 - npm install supertest @types/supertest --save-dev
 - npm install mongodb-memory-server --save-dev
 - npm install --save-dev jest @types/jest ts-jest
@@ -161,7 +159,7 @@
 - docker build -t yavarguliyev/tickets .
 - docker push yavarguliyev/tickets
 
-> # client (user interface)
+> # client-side (user interface)
 
 > `commands that need to be used before creating user interface`
 
